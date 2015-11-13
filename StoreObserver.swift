@@ -23,17 +23,6 @@ enum IAPPurchaseNotificationStatus : Int {
     case DownloadSucceeded = 7   // Indicates that a hosted content was successfully downloaded
 }
 
-extension SKProduct {
-    
-    func localizedPrice() -> String {
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .CurrencyStyle
-        formatter.locale = self.priceLocale
-        return formatter.stringFromNumber(self.price)!
-    }
-    
-}
-
 
 class StoreObserver : NSObject, SKPaymentTransactionObserver {
     var Status : IAPPurchaseNotificationStatus?
