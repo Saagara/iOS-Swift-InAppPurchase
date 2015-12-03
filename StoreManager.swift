@@ -44,6 +44,7 @@ class StoreManager : NSObject, SKRequestDelegate, SKProductsRequestDelegate {
     }
 
     // Request information
+    private var ProductRequest : SKProductsRequest?
     
     /// Query the App Store about the given product identifiers
     /// Fetch information about your products from the App Store
@@ -51,11 +52,11 @@ class StoreManager : NSObject, SKRequestDelegate, SKProductsRequestDelegate {
     {
         self.ProductRequestResponse = MyModel()
         // Create a product request object and initialize it with our product identifiers
-        let request =  SKProductsRequest(productIdentifiers: productIds)
-        request.delegate = self;
+        self.ProductRequest =  SKProductsRequest(productIdentifiers: productIds)
+        self.ProductRequest.delegate = self;
         
         // Send the request to the App Store
-        request.start()
+        self.ProductRequest.start()
     }
     
     /// Used to get the App Store's response to your request and notifies your observer
